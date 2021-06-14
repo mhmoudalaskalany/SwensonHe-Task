@@ -1,3 +1,4 @@
+import { log } from "winston";
 import { User } from "../interfaces/User";
 
 export class UserService {
@@ -25,6 +26,10 @@ export class UserService {
 
     }
 
+    // findAll(): User[] {
+    //     console.log('at find all');
+    //     return Object.values(this.users);
+    // }
     findAll = async (): Promise<User[]> => Object.values(this.users);
 
     find = async (id: number): Promise<User> => this.users[id];
