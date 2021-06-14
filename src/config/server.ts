@@ -8,6 +8,7 @@ import debug from 'debug';
 import { CommonRoutesConfig } from '../common/common.routes.config';
 import { UsersRoutes } from '../users/users.routes.config';
 import { errorHandler } from '../middlewares/error.middleware';
+import { notFoundHandler } from '../middlewares/not-found.middleware';
 const app = express();
 const routes: Array<CommonRoutesConfig> = [];
 const debugLog: debug.IDebugger = debug('app');
@@ -64,5 +65,5 @@ app.get('/', (req: express.Request, res: express.Response) => {
 
 
 app.use(errorHandler);
-
+app.use(notFoundHandler);
 export default app;
