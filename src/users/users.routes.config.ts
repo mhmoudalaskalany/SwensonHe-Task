@@ -1,15 +1,18 @@
+import { UserService } from './../services/user.service';
 import { CommonRoutesConfig } from "../common/common.routes.config";
 
 import express from 'express';
 
+
 export class UsersRoutes extends CommonRoutesConfig {
+    service = new UserService();
     constructor(app: express.Application) {
         super(app, 'UsersRoutes');
     }
     configureRoutes() {
         // (we'll add the actual route configuration here next)
         this.app.route('/users').get((req: express.Request, res: express.Response) => {
-            res.status(200).send('List Of Users');
+            res.status(200).send(this.service.findAll());
         }).post((req: express.Request, res: express.Response) => {
             res.status(200).send('post to users');
         })
@@ -21,7 +24,7 @@ export class UsersRoutes extends CommonRoutesConfig {
                 next();
             })
             .get((req: express.Request, res: express.Response) => {
-                res.status(200).send(`GET requested for id ${req.params.userId}`);
+                res.status(200).send();
             })
             .put((req: express.Request, res: express.Response) => {
                 res.status(200).send(`PUT requested for id ${req.params.userId}`);

@@ -1,15 +1,15 @@
 import shortid from 'shortid';
 import debug from 'debug';
-import { CreateUserDto } from '../dto/User';
+import { User } from '../interfaces/User';
 
 const log: debug.IDebugger = debug('app:in-memory-dao');
 
-class User {
-    users: Array<CreateUserDto> = [];
+class UserRepostoiry {
+    users: Array<User> = [];
 
     constructor() {
         log('Created new instance of UsersDao');
     }
 }
 
-export default new User();
+export default new UserRepostoiry();
