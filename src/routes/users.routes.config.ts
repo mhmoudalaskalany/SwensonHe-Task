@@ -1,18 +1,18 @@
-import { UserService } from './../services/user.service';
-import { CommonRoutesConfig } from "../common/common.routes.config";
+
 
 import express from 'express';
+import { CommonRoutesConfig } from './common.routes.config';
 
 
 export class UsersRoutes extends CommonRoutesConfig {
-    service = new UserService();
+
     constructor(app: express.Application) {
         super(app, 'UsersRoutes');
     }
     configureRoutes() {
         // (we'll add the actual route configuration here next)
         this.app.route('/users').get((req: express.Request, res: express.Response) => {
-            res.status(200).send(this.service.findAll());
+            res.status(200).send();
         }).post((req: express.Request, res: express.Response) => {
             res.status(200).send('post to users');
         })
